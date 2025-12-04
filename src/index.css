@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  /* Custom Colors */
+  --color-primary: #6366f1; /* Indigo-500 */
+  --color-secondary: #4f46e5; /* Indigo-600 */
+  --color-dark: #0f172a; /* Slate-900 */
+  --color-light: #f8fafc; /* Slate-50 */
+
+  /* Custom Fonts */
+  --font-sans: "Inter", sans-serif;
+
+  /* Animations (Optional but nice) */
+  --animate-fade-in: fade-in 0.5s ease-out;
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+/* Base Styles */
+body {
+  @apply bg-light text-slate-800 dark:bg-dark dark:text-slate-100 transition-colors duration-300 ease-in-out font-sans;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-slate-700 rounded-full;
+}
