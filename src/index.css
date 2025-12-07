@@ -1,29 +1,30 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Custom Colors */
-  --color-primary: #6366f1; /* Indigo-500 */
-  --color-secondary: #4f46e5; /* Indigo-600 */
-  --color-dark: #0f172a; /* Slate-900 */
+  /* FIX 1: Desaturate primary/secondary colors slightly for better dark mode appearance */
+  --color-primary: #8b5cf6; /* Violet-500 (Less saturated than Indigo) */
+  --color-secondary: #7c3aed; /* Violet-600 */
+
+  /* FIX 2: Change dark color from Slate-900 to a neutral charcoal gray */
+  --color-dark: #121212; /* Charcoal Black (Professional Dark Mode Background) */
+
+  /* Retain light color */
   --color-light: #f8fafc; /* Slate-50 */
 
   /* Custom Fonts */
   --font-sans: "Inter", sans-serif;
 
-  /* Animations (Optional but nice) */
-  --animate-fade-in: fade-in 0.5s ease-out;
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+  /* FIX 3: Add new neutral gray utilities for better surface/border colors */
+  --color-gray-800: #282828; /* For component surfaces like modals/cards */
+  --color-gray-700: #3c3c3c; /* For borders/dividers/scrollbars */
 }
 
 /* Base Styles */
 body {
+  /* This still correctly uses your new custom properties */
   @apply bg-light text-slate-800 dark:bg-dark dark:text-slate-100 transition-colors duration-300 ease-in-out font-sans;
 }
 
@@ -35,5 +36,6 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-300 dark:bg-slate-700 rounded-full;
+  /* FIX 4: Use the new neutral dark gray for the scrollbar thumb */
+  @apply bg-slate-300 dark:bg-gray-700 rounded-full;
 }
